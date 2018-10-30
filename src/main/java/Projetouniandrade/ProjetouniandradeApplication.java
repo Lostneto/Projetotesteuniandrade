@@ -1,5 +1,6 @@
 package Projetouniandrade;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +9,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import Projetouniandrade.domain.Categoria;
+import Projetouniandrade.domain.Produto;
 import Projetouniandrade.repositories.CategoriaRepository;
+import Projetouniandrade.repositories.ProdutoRepository;
+import javassist.compiler.ast.ASTList;
 
 @SpringBootApplication
 public class ProjetouniandradeApplication implements CommandLineRunner {
 	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
+	@Autowired
+	private ProdutoRepository produtoRepository;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetouniandradeApplication.class, args);
@@ -26,8 +33,19 @@ public class ProjetouniandradeApplication implements CommandLineRunner {
 		Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");
 		
+		Produto p1 = new Produto(null, "Computador", 2000.00);
+		Produto p2 = new Produto(null, "Impressora", 800.00);
+		Produto p3 = new Produto(null, "Mouse", 80.00);
+		
+		cat1.getProdutos().addAll(Arrays.asList(p1,p2,p3));
+		cat2.getProdutos().addAll(Arrays.asList(p2));
+		
+		p1.getCategorias().addAll(Arrays.asList(cat1));
+		p2.getCategorias().addAll(Arrays.asList(cat1,cat2));
+		p3.getCategorias().addAll(Arrays.asList(cat1));
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
+		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
 	}
 	
 	
