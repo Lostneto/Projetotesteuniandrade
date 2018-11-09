@@ -13,6 +13,7 @@ import Projetouniandrade.domain.Cidade;
 import Projetouniandrade.domain.Cliente;
 import Projetouniandrade.domain.Endereco;
 import Projetouniandrade.domain.Estado;
+import Projetouniandrade.domain.ItemPedido;
 import Projetouniandrade.domain.Pedido;
 import Projetouniandrade.domain.Produto;
 import Projetouniandrade.domain.Residuo;
@@ -23,6 +24,7 @@ import Projetouniandrade.repositories.CidadeRepository;
 import Projetouniandrade.repositories.ClienteRepository;
 import Projetouniandrade.repositories.EnderecoRepository;
 import Projetouniandrade.repositories.EstadoRepository;
+import Projetouniandrade.repositories.ItemPedidoRepository;
 import Projetouniandrade.repositories.PedidoRepository;
 import Projetouniandrade.repositories.ProdutoRepository;
 import Projetouniandrade.repositories.ResiduoRepository;
@@ -46,7 +48,8 @@ public class ProjetouniandradeApplication implements CommandLineRunner {
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private ResiduoRepository residuoRepository;
-	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetouniandradeApplication.class, args);
@@ -126,6 +129,19 @@ public class ProjetouniandradeApplication implements CommandLineRunner {
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		residuoRepository.saveAll(Arrays.asList(res1, res2));
+	
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 100.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p5, 0.00, 1, 50.00);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 20.00, 1, 70.00);
+	
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+	
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p5.getItens().addAll(Arrays.asList(ip2));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));	
 	
 	}
 	
