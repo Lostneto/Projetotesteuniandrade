@@ -1,41 +1,13 @@
 package Projetouniandrade;
 
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import Projetouniandrade.domain.Categoria;
-import Projetouniandrade.domain.Cidade;
-import Projetouniandrade.domain.Cliente;
-import Projetouniandrade.domain.Endereco;
-import Projetouniandrade.domain.Estado;
-import Projetouniandrade.domain.ItemPedido;
-import Projetouniandrade.domain.Pagamento;
-import Projetouniandrade.domain.PagamentoComBoleto;
-import Projetouniandrade.domain.PagamentoComCartao;
-import Projetouniandrade.domain.Pedido;
-import Projetouniandrade.domain.Produto;
-import Projetouniandrade.domain.enums.EstadoPagamento;
-import Projetouniandrade.domain.enums.TipoCliente;
-import Projetouniandrade.repositories.CategoriaRepository;
-import Projetouniandrade.repositories.CidadeRepository;
-import Projetouniandrade.repositories.ClienteRepository;
-import Projetouniandrade.repositories.EnderecoRepository;
-import Projetouniandrade.repositories.EstadoRepository;
-import Projetouniandrade.repositories.ItemPedidoRepository;
-import Projetouniandrade.repositories.PagamentoRepository;
-import Projetouniandrade.repositories.PedidoRepository;
-import Projetouniandrade.repositories.ProdutoRepository;
-import Projetouniandrade.repositories.ResiduoRepository;
-
 @SpringBootApplication
 public class ProjetouniandradeApplication implements CommandLineRunner {
 	
-	@Autowired
+	/*@Autowired
  	private CategoriaRepository categoriaRepository;
  	@Autowired
  	private ProdutoRepository produtoRepository;
@@ -52,14 +24,15 @@ public class ProjetouniandradeApplication implements CommandLineRunner {
  	@Autowired
  	private PagamentoRepository pagamentoRepository;
  	@Autowired
- 	private ItemPedidoRepository itemPedidoRepository;
+ 	private ItemPedidoRepository itemPedidoRepository;*/
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetouniandradeApplication.class, args);
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
+	
+	/*public void run(String... args) throws Exception {
 		
 		Categoria cat3 = new Categoria(null, "Eletrônicos");
 		Categoria cat6 = new Categoria(null, "Eletrodomésticos");
@@ -160,7 +133,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
 		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));	
 	
-	}
-	
-	
+	}*/
+	public void run(String... args) throws Exception {		
+	}	
 }
