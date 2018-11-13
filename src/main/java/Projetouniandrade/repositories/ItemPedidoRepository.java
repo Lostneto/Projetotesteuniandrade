@@ -7,5 +7,4 @@ import Projetouniandrade.domain.ItemPedido;
 
 @Repository
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Integer> {
-
-}
+ }

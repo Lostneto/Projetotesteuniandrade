@@ -15,7 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 	@Entity
 	public class Produto implements Serializable {	
@@ -27,14 +27,16 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 		private String nome;
 		private Double preco;
 		
-		@JsonBackReference
+		/*TABELA DINÂMICA P/ TRATATIVA ENTRE PRODUTOS E CATEGORIAS*/
+		@JsonIgnore
 		@ManyToMany
 		@JoinTable (name = "PRODUTO_CATEGOTIA", 
 		joinColumns = @JoinColumn(name = "produto_id"),
-		inverseJoinColumns = @JoinColumn(name = "categoria_id")
-		)
+		inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+		
 		private List<Categoria> categorias = new ArrayList<>();
 		
+		@JsonIgnore
 		@OneToMany(mappedBy="id.produto")
 		private Set<ItemPedido> itens = new HashSet<>();
 		
@@ -48,7 +50,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 			this.preco = preco;
 		}
 		
-		public List<Pedido> getpedidos(){
+		@JsonIgnore
+		public List<Pedido> getPedidos() {
 			List<Pedido> lista = new ArrayList<>();
 			for (ItemPedido x : itens) {
 				lista.add(x.getPedido());
@@ -92,8 +95,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 		public Set<ItemPedido> getItens() {
 			return itens;
 		}
-
-		public void setItens(Set<ItemPedido> itens) {
+		
+	 	public void setItens(Set<ItemPedido> itens) {
 			this.itens = itens;
 		}
 		

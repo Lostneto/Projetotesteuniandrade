@@ -2,8 +2,8 @@ package Projetouniandrade.domain.enums;
 
 public enum StatusResiduo {
 	
-	STATUSAPROV(2,"Produto Fucional"),
-	STATUSDESAPROV(1, "Produto não Funcional");
+	STATUSAPROVADO(2,"Produto Fucional"),
+	STATUSDESAPROVADO(1, "Produto não Funcional");
 	
 	private int cod;
 	private String descricao;

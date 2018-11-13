@@ -3,8 +3,8 @@ package Projetouniandrade.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import Projetouniandrade.domain.Pedido;
+import Projetouniandrade.domain.Pagamento;
 
 @Repository
-public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
+public interface PagamentoRepository extends JpaRepository<Pagamento, Integer> {
  }
